@@ -7,4 +7,11 @@ const validatorRegister = [
     (req, res, next) => validateResults(req, res, next) // Ejecuta la validación y maneja errores
 ];
 
-module.exports = { validatorRegister };
+const validatorCode = [
+    check("code")
+        .exists().withMessage("El código es obligatorio")
+        .isLength({ min: 6, max: 6 }).withMessage("El código debe tener 6 dígitos")
+        .isNumeric().withMessage("El código debe ser numérico"),
+    (req, res, next) => validateResults(req, res, next)
+];
+module.exports = { validatorRegister, validatorCode };

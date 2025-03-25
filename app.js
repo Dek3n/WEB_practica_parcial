@@ -10,6 +10,9 @@ const app = express()
 app.use(cors());
 app.use(express.json());
 
+//Aquí montamos las rutas de autenticación
+app.use("/api/auth", require("./routes/auth"));
+
 // Puerto
 const port = process.env.PORT || 3001
 

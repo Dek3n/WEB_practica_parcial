@@ -1,9 +1,14 @@
 const express = require("express");
-const { registerCtrl } = require("../controllers/auth");
-const { validatorRegister } = require("../validators/auth");
-
 const router = express.Router();
 
+const { registerCtrl, validateEmailCodeCtrl } = require("../controllers/auth");
+const { validatorRegister, validatorCode } = require("../validators/auth");
+const authMiddleware = require("../middleware/session");
+
+// Registro de usuario
 router.post("/register", validatorRegister, registerCtrl);
+
+// Validación del email
+router.post("/validate", authMiddleware, validatorCode, validateEmailCodeCtrl);
 
 module.exports = router;

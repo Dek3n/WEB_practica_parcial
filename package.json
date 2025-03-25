@@ -9,15 +9,22 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "form-data": "^4.0.2",
+    "googleapis": "^148.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.12.1",
+    "mongoose": "^8.13.0",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.10.0",
     "nodemon": "^3.1.9"
-  }
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "description": ""
 }

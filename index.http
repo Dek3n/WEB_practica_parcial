@@ -1,0 +1,17 @@
+### Registro de usuario
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test5@correo.com",
+  "password": "miPassword123"
+}
+
+### Validar código
+POST http://localhost:3001/api/auth/validate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwNDc2N2YwMTkwMDZiOGI2NjU0OCIsImlhdCI6MTc0MjkzMTA2MiwiZXhwIjoxNzQyOTM4MjYyfQ.0Wrv78Tq7JbB3FKTj3sgiPEP6sMLNJ4CjylQuJwsjf8
+Content-Type: application/json
+
+{
+  "code": "895248"
+}

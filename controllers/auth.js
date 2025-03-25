@@ -18,6 +18,8 @@ const registerCtrl = async (req, res) => {
 
         // Generar código de verificación
         const verificationCode = generateCode();
+        console.log("Código de verificación generado:", verificationCode);
+
 
         // Crear usuario en la base de datos
         const newUser = new User({
@@ -46,5 +48,33 @@ const registerCtrl = async (req, res) => {
         handleHttpError(res, "ERROR_REGISTER_USER"); // Manejo de errores
     }
 };
+const validateEmailCodeCtrl = async (req, res) => {
+    try {
+        const { code } = req.body;       // Recogemos el código enviado en la petición
+        const user = req.user;           // El middleware authMiddleware ya habrá cargado el usuario
 
-module.exports = { registerCtrl };
+        if (user.status === "verified") {
+            return res.status(400).json({ message: "Usuario ya validado" });
+        }
+
+        if (user.maxAttempts <= 0) {
+            return handleHttpError(res, "MAX_ATTEMPTS_REACHED", 403);
+        }
+
+        if (user.code === code) {
+            user.status = "verified";
+            await user.save();
+            return res.json({ message: "Email verificado correctamente" });
+        } else {
+            user.maxAttempts -= 1;
+            await user.save();
+            return handleHttpError(res, "INVALID_CODE", 401);
+        }
+
+    } catch (err) {
+        console.log(err);
+        handleHttpError(res, "ERROR_VALIDATING_CODE");
+    }
+};
+
+module.exports = { registerCtrl, validateEmailCodeCtrl };
