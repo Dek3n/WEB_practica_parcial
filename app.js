@@ -5,9 +5,12 @@ require('dotenv').config();
 const dbConnect = require('./config/mongo')
 
 const app = express()
-//Le decimos a la app de express() que use cors para evitar el error Cross-Domain (XD)
-app.use(cors())
-app.use(express.json())
+
+// Middleware para CORS y JSON
+app.use(cors());
+app.use(express.json());
+
+// Puerto
 const port = process.env.PORT || 3001
 
 app.listen(port, () => {
