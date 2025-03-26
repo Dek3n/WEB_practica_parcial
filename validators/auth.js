@@ -14,4 +14,9 @@ const validatorCode = [
         .isNumeric().withMessage("El código debe ser numérico"),
     (req, res, next) => validateResults(req, res, next)
 ];
-module.exports = { validatorRegister, validatorCode };
+const validatorLogin =[
+    check("email").exists().notEmpty().isEmail().withMessage("Email inválido"),
+    check("password").exists().notEmpty().withMessage("Contraseña requerida"),
+    (req, res, next) => validateResults(req, res, next)
+];
+module.exports = { validatorRegister, validatorCode, validatorLogin };

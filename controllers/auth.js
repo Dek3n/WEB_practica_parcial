@@ -76,5 +76,36 @@ const validateEmailCodeCtrl = async (req, res) => {
         handleHttpError(res, "ERROR_VALIDATING_CODE");
     }
 };
+const loginCtrl = async (req, res) =>{
+    try{
+        const{email, password} =req.body;
+    
+        const user = await User.findOne({email});
+        if(!user){
+            return handleHttpError(res,"EMAIL_NO_ENCONTRADO", 404);
+        }
 
-module.exports = { registerCtrl, validateEmailCodeCtrl };
+        const isCorrect = await bcrypt.compare(password, user.password);
+        if(!isCorrect){
+            return handleHttpError(res, "USUARIO_INVALIDO", 401);
+
+        }
+
+        const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn: "2h"});
+
+        res.json({
+            message:"Login exitoso",
+            user:{
+                email: user.email,
+                status: user.status,
+                role: user.role
+            }, 
+            token
+        });
+    }catch (err){
+        console.log(err);
+        handleHttpError(res,"ERROR_LOGIN");
+    }
+};
+
+module.exports = { registerCtrl, validateEmailCodeCtrl, loginCtrl};
