@@ -25,3 +25,19 @@ Content-Type: application/json
   "email": "test4@correo.com",
   "password": "miPassword123"
 }
+
+### Actualizar perfil del usuario (Onboarding)
+PATCH http://localhost:3001/api/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzAxMDQwMSwiZXhwIjoxNzQzMDE3NjAxfQ.xEU1qdZ94qZFPA2vv0yoSUt59d86ULS53mjb-ZZ2P_o
+Content-Type: application/json
+
+{
+  "fullName": "Juan Pérez",
+  "phone": "+34 123 456 789",
+  "company": {
+    "name": "Mi Empresa",
+    "sector": "Software",
+    "country": "España",
+    "size": "10-50"
+  }
+}

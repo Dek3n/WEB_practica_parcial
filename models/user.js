@@ -31,7 +31,31 @@ const UserSchema = new mongoose.Schema({
     // Número de intentos para validar email
     maxAttempts:{ 
         type: Number, 
-        default: 3 } 
+        default: 3 
+    },
+    //Nombre completo
+    fullName:{
+        type: String
+    },
+    //Telefono
+    phone:{
+        type: String
+    },
+    //Empresa
+    company:{
+        name:{
+            type: String
+        },
+        sector:{
+            type: String
+        },
+        country:{
+            type: String
+        },
+        size:{
+            type: String   
+        } 
+    }
 }, { timestamps: true });
 
 // Middleware: antes de guardar el usuario, encriptamos la contraseña

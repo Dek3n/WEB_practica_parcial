@@ -108,4 +108,26 @@ const loginCtrl = async (req, res) =>{
     }
 };
 
-module.exports = { registerCtrl, validateEmailCodeCtrl, loginCtrl};
+const updateProfileCtrl = async(req, res) =>{
+    try{
+        const user = req.user;
+        const {fullName, phone, company}= req.body;
+
+        user.fullName = fullName || user.fullName;
+        user.phone = phone || user.phone;
+
+        if(company){
+            user.company ={
+                ...user.company, //mantiene lo que ya tenía el usuario
+                ...company       //actualiza solo lo que envías desde el frontend
+            };
+        }
+        await user.save();
+
+        res.json({message:"Perfil actualizado correctamente", user});
+    } catch(err){
+        console.log(err);
+        handleHttpError(res,"ERROR_ACTUALIZAR_PERFIL");
+    }
+};
+module.exports = { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl};
