@@ -5,4 +5,4 @@ const handleHttpError = (res, message = "ERROR", code = 403) => {
     });
 };
 
-module.exports = { handleHttpError };
+export { handleHttpError };

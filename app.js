@@ -1,23 +1,25 @@
-const express = require("express")
-const cors = require("cors")
-require('dotenv').config();
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import dbConnect from "./config/mongo.js";
+import authRoutes from "./routes/auth.js";
 
-const dbConnect = require('./config/mongo')
+dotenv.config();
 
-const app = express()
+const app = express();
 
 // Middleware para CORS y JSON
 app.use(cors());
 app.use(express.json());
 
-//Aquí montamos las rutas de autenticación
-app.use("/api/auth", require("./routes/auth"));
+// Aquí montamos las rutas de autenticación
+app.use("/api/auth", authRoutes);
 
 // Puerto
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
-    console.log("Servidor escuchando en el puerto " + port)
-})
+  console.log("Servidor escuchando en el puerto " + port);
+});
 
-dbConnect()
+dbConnect();

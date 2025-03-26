@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### Actualizar perfil del usuario (Onboarding)
 PATCH http://localhost:3001/api/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzAxMDQwMSwiZXhwIjoxNzQzMDE3NjAxfQ.xEU1qdZ94qZFPA2vv0yoSUt59d86ULS53mjb-ZZ2P_o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzAyMDA3NywiZXhwIjoxNzQzMDI3Mjc3fQ.9q7fsJCuedAM0X6PSiIjgF1pPS8GYa_i2M_Xik9QVkw
 Content-Type: application/json
 
 {

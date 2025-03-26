@@ -1,70 +1,66 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-//defino el schema de users
+// Definimos el schema de usuarios
 const UserSchema = new mongoose.Schema({
-    //email
-    email:{ 
-        type: String, 
-        unique: true, 
-        required: true 
-    }, 
-    //contraseña
-    password:{ 
-        type: String, 
-        required: true 
-    }, 
-    // Código de verificación de 6 dígitos
-    code:{
-        type: String, required: true
-    }, 
-    //estado de verificacion
-    status:{ 
-        type: String, 
-        default: "unverified" 
+    email: {
+        type: String,
+        unique: true,
+        required: true
     },
-    // Rol por defecto "user"
-    role:{ 
-        type: String, 
-        default: "user" 
-    }, 
-    // Número de intentos para validar email
-    maxAttempts:{ 
-        type: Number, 
-        default: 3 
+    password: {
+        type: String,
+        required: true
     },
-    //Nombre completo
-    fullName:{
+    code: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        default: "unverified"
+    },
+    role: {
+        type: String,
+        default: "user"
+    },
+    maxAttempts: {
+        type: Number,
+        default: 3
+    },
+    fullName: {
         type: String
     },
-    //Telefono
-    phone:{
+    phone: {
         type: String
     },
-    //Empresa
-    company:{
-        name:{
+    company: {
+        name: {
             type: String
         },
-        sector:{
+        sector: {
             type: String
         },
-        country:{
+        country: {
             type: String
         },
-        size:{
-            type: String   
-        } 
+        size: {
+            type: String
+        },
+        logo: {
+            type: String
+        }
     }
 }, { timestamps: true });
 
-// Middleware: antes de guardar el usuario, encriptamos la contraseña
+// Middleware: encriptar contraseña antes de guardar
 UserSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return next(); // Si la contraseña no se ha modificado, seguimos
-    const salt = await bcrypt.genSalt(10); 
-    this.password = await bcrypt.hash(this.password, salt); // Encriptamos la contraseña
+    if (!this.isModified("password")) return next();
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
 // Exportamos el modelo de usuario
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
+export default User;
