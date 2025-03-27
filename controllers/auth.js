@@ -160,10 +160,22 @@ const uploadLogoCtrl = async (req, res) => {
   }
 };
 
-export {
-  registerCtrl,
-  validateEmailCodeCtrl,
-  loginCtrl,
-  updateProfileCtrl,
-  uploadLogoCtrl,
+const getProfileCtrl = async (req, res) =>{
+  try{
+    const user = req.user;
+
+    res.json({
+      email: user.email,
+      fullName: user.fullName,
+      phone: user.phone,
+      status: user.status,
+      role: user.role,
+      company: user.company
+    });
+  }catch(err){
+    console.log(err);
+    handleHttpError(err, "ERROR_GETTING PROFILE");
+  }
 };
+
+export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl};

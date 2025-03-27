@@ -1,17 +1,6 @@
 import express from "express";
-import {
-  registerCtrl,
-  validateEmailCodeCtrl,
-  loginCtrl,
-  updateProfileCtrl,
-  uploadLogoCtrl
-} from "../controllers/auth.js";
-
-import {
-  validatorRegister,
-  validatorCode,
-  validatorLogin
-} from "../validators/auth.js";
+import {registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl} from "../controllers/auth.js";
+import {validatorRegister, validatorCode, validatorLogin} from "../validators/auth.js";
 
 import authMiddleware from "../middleware/session.js";
 import upload from "../middleware/upload.js";
@@ -32,5 +21,9 @@ router.patch("/profile", authMiddleware, updateProfileCtrl);
 
 // Subida de logo
 router.patch("/logo", authMiddleware, upload.single("logo"), uploadLogoCtrl);
+
+//GET del usuario a partir del token JWT
+router.get("/me", authMiddleware, getProfileCtrl);
+
 
 export default router;
