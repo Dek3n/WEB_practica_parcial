@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### Actualizar perfil del usuario (Onboarding)
 PATCH http://localhost:3001/api/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzAyMDA3NywiZXhwIjoxNzQzMDI3Mjc3fQ.9q7fsJCuedAM0X6PSiIjgF1pPS8GYa_i2M_Xik9QVkw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
 Content-Type: application/json
 
 {
@@ -41,3 +41,11 @@ Content-Type: application/json
     "size": "10-50"
   }
 }
+
+### Obtener perfil del usuario autenticado
+GET http://localhost:3001/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
+
+### Eliminar usuario (soft delete)
+DELETE http://localhost:3001/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs

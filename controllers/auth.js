@@ -178,4 +178,24 @@ const getProfileCtrl = async (req, res) =>{
   }
 };
 
-export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl};
+const deleteUserCtrl =async(req, res)=>{
+  try{
+    const user = req.user;
+    const soft = req.query.soft !== "false";
+  
+    if (soft) {
+      user.status = "deleted";
+      await user.save();
+      return res.json({ message: "Usuario marcado como eliminado (soft delete)" });
+    } else {
+      await User.deleteOne({ _id: user._id });
+      return res.json({ message: "Usuario eliminado permanentemente (hard delete)" });
+    }
+  }catch(err){
+    console.log(err);
+    handleHttpError(res, "ERROR_ELIMINAR_USER");
+  }
+
+};
+
+export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl};
