@@ -223,5 +223,45 @@ const recoverPasswordCtrl = async (req, res) => {
   }
 };
 
+const inviteUserCtrl = async (req, res) => {
+  try {
+    const inviter = req.user; // usuario que invita
+    const { email } = req.body;
 
-export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl, recoverPasswordCtrl};
+    if (!email) {
+      return handleHttpError(res, "EMAIL_REQUIRED", 400);
+    }
+
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return handleHttpError(res, "EMAIL_ALREADY_EXISTS", 409);
+    }
+
+    const newUser = new User({
+      email,
+      role: "guest",
+      company: inviter.company, // misma empresa
+      status: "invited",
+      password: "temporal123", // se sobreescribirá cuando el user se registre bien
+      code: "000000" // sin validación de código
+    });
+
+    await newUser.save();
+
+    // Email opcional de invitación
+    await sendRecoveryEmail(email, "Has sido invitado a una compañía. Regístrate usando este email.");
+
+    res.status(201).json({
+      message: "Usuario invitado correctamente",
+      user: {
+        email: newUser.email,
+        role: newUser.role,
+        company: newUser.company
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    handleHttpError(res, "ERROR_INVITING_USER");
+  }
+};
+export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl, recoverPasswordCtrl, inviteUserCtrl};

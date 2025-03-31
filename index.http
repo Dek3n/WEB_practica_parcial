@@ -58,3 +58,12 @@ Content-Type: application/json
 {
   "email": "test4@correo.com"
 }
+
+### Invitar usuario guest
+POST http://localhost:3001/api/auth/invite
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ
+Content-Type: application/json
+
+{
+  "email": "guest123@correo.com"
+}
