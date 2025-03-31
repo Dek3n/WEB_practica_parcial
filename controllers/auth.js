@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { handleHttpError } from "../utils/handleError.js";
 import ipfsClient from "../config/ipfs.js";
+import sendRecoveryEmail from "../utils/emailSender.js";
+
 
 // Función para generar un código aleatorio de 6 dígitos
 const generateCode = () => Math.floor(100000 + Math.random() * 900000).toString();
@@ -198,4 +200,28 @@ const deleteUserCtrl =async(req, res)=>{
 
 };
 
-export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl};
+const recoverPasswordCtrl = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return handleHttpError(res, "EMAIL_NO_ENCONTRADO", 404);
+    }
+
+    const recoveryCode = Math.floor(100000 + Math.random() * 900000).toString();
+    user.resetCode = recoveryCode;
+    await user.save();
+
+    await sendRecoveryEmail(email, recoveryCode);
+
+    res.json({ message: "Código de recuperación enviado al correo electrónico" });
+
+  } catch (err) {
+    console.log(err);
+    handleHttpError(res, "ERROR_RECOVERY_EMAIL");
+  }
+};
+
+
+export { registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl, recoverPasswordCtrl};

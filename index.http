@@ -49,3 +49,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZ
 ### Eliminar usuario (soft delete)
 DELETE http://localhost:3001/api/auth/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
+
+
+### Recuperar contraseña
+POST http://localhost:3001/api/auth/recover-password
+Content-Type: application/json
+
+{
+  "email": "test4@correo.com"
+}

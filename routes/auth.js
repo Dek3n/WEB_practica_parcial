@@ -1,5 +1,5 @@
 import express from "express";
-import {registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl} from "../controllers/auth.js";
+import {registerCtrl, validateEmailCodeCtrl, loginCtrl, updateProfileCtrl, uploadLogoCtrl, getProfileCtrl, deleteUserCtrl, recoverPasswordCtrl} from "../controllers/auth.js";
 import {validatorRegister, validatorCode, validatorLogin} from "../validators/auth.js";
 
 import authMiddleware from "../middleware/session.js";
@@ -26,6 +26,8 @@ router.patch("/logo", authMiddleware, upload.single("logo"), uploadLogoCtrl);
 router.get("/me", authMiddleware, getProfileCtrl);
 
 router.delete("/me", authMiddleware, deleteUserCtrl);
+
+router.post("/recover-password", recoverPasswordCtrl);
 
 
 export default router;

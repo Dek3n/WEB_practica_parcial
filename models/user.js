@@ -50,6 +50,9 @@ const UserSchema = new mongoose.Schema({
         logo: {
             type: String
         }
+    },
+    resetCode: {
+        type: String
     }
 }, { timestamps: true });
 
