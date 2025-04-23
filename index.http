@@ -3,13 +3,13 @@ POST http://localhost:3001/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "test5@correo.com",
+  "email": "test7@correo.com",
   "password": "miPassword123"
 }
 
 ### Validar código
 POST http://localhost:3001/api/auth/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwNDc2N2YwMTkwMDZiOGI2NjU0OCIsImlhdCI6MTc0MjkzMTA2MiwiZXhwIjoxNzQyOTM4MjYyfQ.0Wrv78Tq7JbB3FKTj3sgiPEP6sMLNJ4CjylQuJwsjf8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTQ5NSwiZXhwIjoxNzQ1NDE2Njk1fQ.1BIZbhT1JnCDgVKh6aOHv_9UNqvv4d1e9sxBcrzNGkQ
 Content-Type: application/json
 
 {
@@ -22,13 +22,13 @@ POST http://localhost:3001/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "test4@correo.com",
+  "email": "test7@correo.com",
   "password": "miPassword123"
 }
 
 ### Actualizar perfil del usuario (Onboarding)
 PATCH http://localhost:3001/api/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
 Content-Type: application/json
 
 {
@@ -44,11 +44,11 @@ Content-Type: application/json
 
 ### Obtener perfil del usuario autenticado
 GET http://localhost:3001/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
 
 ### Eliminar usuario (soft delete)
 DELETE http://localhost:3001/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ.hhpDG2PxWTlteVfz7Xz8H3kiM1aPneijVhA42jNNMJs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
 
 
 ### Recuperar contraseña
@@ -56,14 +56,14 @@ POST http://localhost:3001/api/auth/recover-password
 Content-Type: application/json
 
 {
-  "email": "test4@correo.com"
+  "email": "test7@correo.com"
 }
 
 ### Invitar usuario guest
 POST http://localhost:3001/api/auth/invite
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTMwMzAzZDRiNDcwN2QzNmM4ZTUwOCIsImlhdCI6MTc0MzM1MDM2NCwiZXhwIjoxNzQzMzU3NTY0fQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
 Content-Type: application/json
 
 {
-  "email": "guest123@correo.com"
+  "email": "javiernoez2905@gmail.com"
 }
