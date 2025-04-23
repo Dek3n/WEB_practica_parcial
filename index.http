@@ -87,7 +87,7 @@ Content-Type: application/json
 
 ### Editar cliente
 PUT http://localhost:3001/api/client/6808fc5effb19030278dbf86
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
 Content-Type: application/json
 
 {
@@ -96,20 +96,61 @@ Content-Type: application/json
 
 ### Obtener todos los clientes
 GET http://localhost:3001/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
 
 ### Obtener un cliente por ID
 GET http://localhost:3001/api/client/6808fc5effb19030278dbf86
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
 
 ### Archivar cliente (soft delete)
 PATCH http://localhost:3001/api/client/6808fc5effb19030278dbf86/archive
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
 
 ### Recuperar cliente archivado
 PATCH http://localhost:3001/api/client/6808fc5effb19030278dbf86/unarchive
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
 
 ### Eliminar cliente (hard delete)
 DELETE http://localhost:3001/api/client/6808fc5effb19030278dbf86
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+
+### Crear proyecto
+POST http://localhost:3001/api/project
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+Content-Type: application/json
+
+{
+  "name": "Web Corporativa",
+  "description": "Diseño y desarrollo del nuevo sitio web",
+  "client": "6808fc5effb19030278dbf86"
+}
+
+### Editar proyecto
+PUT http://localhost:3001/api/project/6808fc5effb19030278dbf86
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+Content-Type: application/json
+
+{
+  "description": "Proyecto actualizado con nuevas funcionalidades"
+}
+
+### Obtener todos los proyectos del usuario/empresa
+GET http://localhost:3001/api/project
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+### Obtener un proyecto por ID
+GET http://localhost:3001/api/project/680919b6331df7d805f8be78
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+### Archivar proyecto (soft delete)
+PATCH http://localhost:3001/api/project/680919b6331df7d805f8be78/archive
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+### Recuperar proyecto archivado
+PATCH http://localhost:3001/api/project/<PROJECT_ID>/unarchive
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+### Eliminar proyecto (hard delete)
+DELETE http://localhost:3001/api/project/680919b6331df7d805f8be78
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
