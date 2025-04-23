@@ -3,13 +3,13 @@ POST http://localhost:3001/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "test7@correo.com",
+  "email": "test8@correo.com",
   "password": "miPassword123"
 }
 
 ### Validar código
 POST http://localhost:3001/api/auth/validate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTQ5NSwiZXhwIjoxNzQ1NDE2Njk1fQ.1BIZbhT1JnCDgVKh6aOHv_9UNqvv4d1e9sxBcrzNGkQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### Actualizar perfil del usuario (Onboarding)
 PATCH http://localhost:3001/api/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
 Content-Type: application/json
 
 {
@@ -44,11 +44,11 @@ Content-Type: application/json
 
 ### Obtener perfil del usuario autenticado
 GET http://localhost:3001/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
 
 ### Eliminar usuario (soft delete)
 DELETE http://localhost:3001/api/auth/me
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
 
 
 ### Recuperar contraseña
@@ -56,14 +56,60 @@ POST http://localhost:3001/api/auth/recover-password
 Content-Type: application/json
 
 {
-  "email": "test7@correo.com"
+  "email": "test8@correo.com"
 }
 
 ### Invitar usuario guest
 POST http://localhost:3001/api/auth/invite
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQwOTUzMywiZXhwIjoxNzQ1NDE2NzMzfQ.-aUkZEjIAk8o_il3QBMIe7ZidnfXaOWDHJBOi4HylnA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
 Content-Type: application/json
 
 {
   "email": "javiernoez2905@gmail.com"
 }
+
+
+
+
+
+### Crear cliente
+POST http://localhost:3001/api/client
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Content-Type: application/json
+
+{
+  "name": "Empresa Tech S.L.",
+  "nif": "B12345678",
+  "address": "Calle Mayor 123",
+  "phone": "611223344",
+  "email": "cliente@empresa.com"
+}
+
+### Editar cliente
+PUT http://localhost:3001/api/client/6808fc5effb19030278dbf86
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Content-Type: application/json
+
+{
+  "phone": "699998877"
+}
+
+### Obtener todos los clientes
+GET http://localhost:3001/api/client
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+
+### Obtener un cliente por ID
+GET http://localhost:3001/api/client/6808fc5effb19030278dbf86
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+
+### Archivar cliente (soft delete)
+PATCH http://localhost:3001/api/client/6808fc5effb19030278dbf86/archive
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+
+### Recuperar cliente archivado
+PATCH http://localhost:3001/api/client/6808fc5effb19030278dbf86/unarchive
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+
+### Eliminar cliente (hard delete)
+DELETE http://localhost:3001/api/client/6808fc5effb19030278dbf86
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk

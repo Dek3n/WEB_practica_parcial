@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import dbConnect from "./config/mongo.js";
 import authRoutes from "./routes/auth.js";
+import clientRoutes from "./routes/client.js";
 
 dotenv.config();
 
@@ -14,6 +15,9 @@ app.use(express.json());
 
 // Aquí montamos las rutas de autenticación
 app.use("/api/auth", authRoutes);
+
+//NUEVA ruta de clientes
+app.use("/api/client", clientRoutes);
 
 // Puerto
 const port = process.env.PORT || 3001;
