@@ -166,3 +166,32 @@ Content-Type: application/json
   "description": "Montaje de estructura metálica",
   "date": "2025-05-12"
 }
+
+### Obtener todos los albaranes visibles
+GET http://localhost:3001/api/deliverynote
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+
+### Obtener albarán por ID
+GET http://localhost:3001/api/deliverynote/6818dbcdfeea9880002a3e89
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+
+### Generar PDF del albarán
+GET http://localhost:3001/api/deliverynote/pdf/6818dbcdfeea9880002a3e89
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+
+### Firmar albarán (subir imagen de firma)
+PATCH http://localhost:3001/api/deliverynote/6818dbcdfeea9880002a3e89/sign
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="signature"; filename="firma.png"
+Content-Type: image/png
+
+< ./firma.png
+--MyBoundary--
+
+
+### Eliminar albarán (solo si NO está firmado)
+DELETE http://localhost:3001/api/deliverynote/6818da23d4cc98dad15fd0db
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU

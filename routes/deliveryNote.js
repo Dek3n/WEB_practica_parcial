@@ -6,8 +6,11 @@ import {
   getDeliveryNotesCtrl,
   getDeliveryNoteByIdCtrl,
   updateDeliveryNoteCtrl,
-  deleteDeliveryNoteCtrl
+  deleteDeliveryNoteCtrl,
+  getDeliveryNotePDFCtrl,
+  signDeliveryNoteCtrl
 } from "../controllers/deliveryNote.js";
+import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
@@ -25,5 +28,9 @@ router.patch("/:id", authMiddleware, updateDeliveryNoteCtrl);
 
 // Eliminar albarán (si no está firmado)
 router.delete("/:id", authMiddleware, deleteDeliveryNoteCtrl);
+
+router.get("/pdf/:id", authMiddleware, getDeliveryNotePDFCtrl);
+
+router.patch("/:id/sign", authMiddleware, upload.single("signature"), signDeliveryNoteCtrl)
 
 export default router;

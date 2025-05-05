@@ -19,6 +19,9 @@ const DeliveryNoteSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    signatureUrl: {
+      type: String // Aquí guardaremos el hash/IPFS o URL de la firma
+    },
     status: {
       type: String,
       enum: ["active", "archived", "deleted"],
