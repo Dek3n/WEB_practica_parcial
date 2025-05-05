@@ -5,6 +5,7 @@ import dbConnect from "./config/mongo.js";
 import authRoutes from "./routes/auth.js";
 import clientRoutes from "./routes/client.js";
 import projectRoutes from "./routes/project.js";
+import deliveryNoteRoutes from "./routes/deliveryNote.js";
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/client", clientRoutes);
 
 app.use("/api/project", projectRoutes);
+
+app.use("/api/deliverynote", deliveryNoteRoutes);
 
 // Puerto
 const port = process.env.PORT || 3001;

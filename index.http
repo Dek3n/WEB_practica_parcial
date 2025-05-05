@@ -74,7 +74,7 @@ Content-Type: application/json
 
 ### Crear cliente
 POST http://localhost:3001/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhmYmViZmZiMTkwMzAyNzhkYmY3OCIsImlhdCI6MTc0NTQxOTI0MywiZXhwIjoxNzQ1NDI2NDQzfQ.233-tVoj15A876npi-zqXzuNCD0BErCFpVem7dl5Fvk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
 Content-Type: application/json
 
 {
@@ -117,13 +117,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3M
 
 ### Crear proyecto
 POST http://localhost:3001/api/project
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
 Content-Type: application/json
 
 {
   "name": "Web Corporativa",
   "description": "Diseño y desarrollo del nuevo sitio web",
-  "client": "6808fc5effb19030278dbf86"
+  "client": "6818d7d1342616a071c0849b"
 }
 
 ### Editar proyecto
@@ -154,3 +154,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3M
 ### Eliminar proyecto (hard delete)
 DELETE http://localhost:3001/api/project/680919b6331df7d805f8be78
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NTQyNjg0MiwiZXhwIjoxNzQ1NDM0MDQyfQ.i6M18J6ZS5660lIH5DEhKpGr-9NLPIYqNA_VBQAlZ2I
+
+
+### Crear albarán
+POST http://localhost:3001/api/deliverynote
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+Content-Type: application/json
+
+{
+  "project": "6818d7f6342616a071c0849e",
+  "description": "Montaje de estructura metálica",
+  "date": "2025-05-12"
+}
