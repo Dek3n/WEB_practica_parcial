@@ -4,6 +4,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
+    "start": "node --watch app.js",
   "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
 },
   "keywords": [],
