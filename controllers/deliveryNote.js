@@ -1,6 +1,8 @@
 import DeliveryNote from "../models/deliveryNote.js";
 import { handleHttpError } from "../utils/handleError.js";
 import PDFDocument from "pdfkit";
+import fs from "fs";
+import path from "path";
 
 // Crear un nuevo albarán
 const createDeliveryNoteCtrl = async (req, res) => {
@@ -135,23 +137,59 @@ const getDeliveryNotePDFCtrl = async (req, res) => {
         return handleHttpError(res, "FIRMA_NO_ENVIADA", 400);
       }
   
-      // Puedes usar IPFS u otro servicio. Aquí lo simulamos con una URL fake.
-      const fakeUrl = `https://fake-ipfs.io/${file.originalname}`;
+      const note = await DeliveryNote.findById(req.params.id).populate("project");
   
-      const note = await DeliveryNote.findById(req.params.id);
       if (!note) return handleHttpError(res, "NOT_FOUND", 404);
   
+      // Simular subida de firma
+      const fakeSignatureUrl = `https://fake-ipfs.io/${file.originalname}`;
       note.signed = true;
-      note.signatureUrl = fakeUrl;
+      note.signatureUrl = fakeSignatureUrl;
+  
+      // ➕ Generar PDF
+      const pdfDir = path.join(process.cwd(), "pdfs");
+      if (!fs.existsSync(pdfDir)) fs.mkdirSync(pdfDir); // crea la carpeta si no existe
+  
+      const pdfPath = path.join(pdfDir, `albaran_${note._id}.pdf`);
+      const doc = new PDFDocument();
+  
+      doc.pipe(fs.createWriteStream(pdfPath));
+      doc.fontSize(20).text("ALBARÁN DE ENTREGA", { align: "center" }).moveDown();
+      doc.fontSize(12).text(`Proyecto: ${note.project.name}`);
+      doc.text(`Descripción: ${note.description}`);
+      doc.text(`Fecha: ${note.date.toLocaleDateString()}`);
+      doc.text(`Firmado ✅`);
+      doc.end();
+  
+      // ➕ Guardar la URL del PDF
+      note.pdfUrl = `http://localhost:3001/static/albaran_${note._id}.pdf`;
   
       await note.save();
   
-      res.json({ message: "Albarán firmado", note });
+      res.json({ message: "Albarán firmado y PDF generado", note });
     } catch (err) {
       console.log(err);
       handleHttpError(res, "ERROR_SIGNING_DELIVERY_NOTE");
     }
   };
+
+  // Simula la generación del PDF y lo guarda localmente
+const generateAndUploadPDF = async (note) => {
+    const doc = new PDFDocument();
+    const filePath = `./pdfs/albaran_${note._id}.pdf`;
+  
+    doc.pipe(fs.createWriteStream(filePath));
+    doc.fontSize(16).text("ALBARÁN DE ENTREGA", { align: "center" }).moveDown();
+    doc.text(`Proyecto: ${note.project.name}`);
+    doc.text(`Descripción: ${note.description}`);
+    doc.text(`Fecha: ${note.date.toLocaleDateString()}`);
+    doc.text(`Firmado ✅`);
+    doc.end();
+  
+    // Simulamos una "URL" pública
+    return `http://localhost:3001/static/albaran_${note._id}.pdf`;
+  };
+
 export {
   createDeliveryNoteCtrl,
   getDeliveryNotesCtrl,

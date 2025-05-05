@@ -6,6 +6,8 @@ import authRoutes from "./routes/auth.js";
 import clientRoutes from "./routes/client.js";
 import projectRoutes from "./routes/project.js";
 import deliveryNoteRoutes from "./routes/deliveryNote.js";
+import path from "path";
+
 
 dotenv.config();
 
@@ -24,6 +26,9 @@ app.use("/api/client", clientRoutes);
 app.use("/api/project", projectRoutes);
 
 app.use("/api/deliverynote", deliveryNoteRoutes);
+
+const __dirname = path.resolve();
+app.use("/static", express.static(path.join(__dirname, "pdfs")));
 
 // Puerto
 const port = process.env.PORT || 3001;

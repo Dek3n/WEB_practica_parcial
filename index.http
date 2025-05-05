@@ -179,7 +179,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3M
 GET http://localhost:3001/api/deliverynote/pdf/6818dbcdfeea9880002a3e89
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
 
-### Firmar albarán (subir imagen de firma)
+### Firmar albarán (subir firma + generar PDF)
 PATCH http://localhost:3001/api/deliverynote/6818dbcdfeea9880002a3e89/sign
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
 Content-Type: multipart/form-data; boundary=MyBoundary

@@ -20,7 +20,10 @@ const DeliveryNoteSchema = new mongoose.Schema(
       default: false,
     },
     signatureUrl: {
-      type: String // Aquí guardaremos el hash/IPFS o URL de la firma
+      type: String // Aquí guardamos el hash/IPFS o URL de la firma
+    },
+    pdfUrl: {
+      type: String // Aquí se guarda la URL del PDF generado (simulado)
     },
     status: {
       type: String,
