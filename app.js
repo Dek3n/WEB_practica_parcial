@@ -7,7 +7,8 @@ import clientRoutes from "./routes/client.js";
 import projectRoutes from "./routes/project.js";
 import deliveryNoteRoutes from "./routes/deliveryNote.js";
 import path from "path";
-
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./config/swagger.js";
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.use("/api/deliverynote", deliveryNoteRoutes);
 
 const __dirname = path.resolve();
 app.use("/static", express.static(path.join(__dirname, "pdfs")));
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Puerto
 const port = process.env.PORT || 3001;

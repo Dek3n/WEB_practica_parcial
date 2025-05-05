@@ -17,25 +17,152 @@ import {
 
 const router = express.Router();
 
-// Crear cliente
+/**
+ * @swagger
+ * /api/client:
+ *   post:
+ *     summary: Crear un nuevo cliente
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example:
+ *             name: "Empresa ABC"
+ *             email: "empresa@abc.com"
+ *             phone: "+34 123456789"
+ *     responses:
+ *       201:
+ *         description: Cliente creado correctamente
+ *       400:
+ *         description: Error de validación
+ */
 router.post("/", authMiddleware, validatorCreateClient, createClientCtrl);
 
-// Editar cliente
+/**
+ * @swagger
+ * /api/client/{id}:
+ *   put:
+ *     summary: Actualizar un cliente existente
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del cliente
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           example:
+ *             name: "Nuevo nombre"
+ *             email: "nuevo@email.com"
+ *     responses:
+ *       200:
+ *         description: Cliente actualizado correctamente
+ */
 router.put("/:id", authMiddleware, validatorUpdateClient, updateClientCtrl);
 
-// Obtener todos
+/**
+ * @swagger
+ * /api/client:
+ *   get:
+ *     summary: Obtener todos los clientes
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de clientes
+ */
 router.get("/", authMiddleware, getClientsCtrl);
 
-// Obtener uno
+/**
+ * @swagger
+ * /api/client/{id}:
+ *   get:
+ *     summary: Obtener cliente por ID
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID del cliente
+ *     responses:
+ *       200:
+ *         description: Detalles del cliente
+ *       404:
+ *         description: Cliente no encontrado
+ */
 router.get("/:id", authMiddleware, getClientByIdCtrl);
 
-// Archivar (soft delete)
+/**
+ * @swagger
+ * /api/client/{id}/archive:
+ *   patch:
+ *     summary: Archivar cliente (soft delete)
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Cliente archivado correctamente
+ */
 router.patch("/:id/archive", authMiddleware, archiveClientCtrl);
 
-// Recuperar (unarchive)
+/**
+ * @swagger
+ * /api/client/{id}/unarchive:
+ *   patch:
+ *     summary: Recuperar cliente archivado
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Cliente recuperado correctamente
+ */
 router.patch("/:id/unarchive", authMiddleware, unarchiveClientCtrl);
 
-// Eliminar cliente (hard delete)
+/**
+ * @swagger
+ * /api/client/{id}:
+ *   delete:
+ *     summary: Eliminar cliente permanentemente (hard delete)
+ *     tags: [Clientes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Cliente eliminado correctamente
+ */
 router.delete("/:id", authMiddleware, deleteClientCtrl);
 
 export default router;
