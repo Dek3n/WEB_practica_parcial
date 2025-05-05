@@ -36,8 +36,12 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Puerto
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => {
-  console.log("Servidor escuchando en el puerto " + port);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log("Servidor escuchando en el puerto " + port);
+  });
+}
 
 dbConnect();
+
+export default app;
