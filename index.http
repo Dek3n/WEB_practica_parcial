@@ -74,12 +74,12 @@ Content-Type: application/json
 
 ### Crear cliente
 POST http://localhost:3001/api/client
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjQ1ODU2MSwiZXhwIjoxNzQ2NDY1NzYxfQ.xdh01ojDU73s3lFfhFnFJay2lAmmCWzyVwqwY9hjSzU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDhkNWQ3MDNmMTcwNWVmMzQxNDQwZSIsImlhdCI6MTc0NjU1NjY4MiwiZXhwIjoxNzQ2NTYzODgyfQ.vUK8Ri-tdur9UA9s8ZjMqOyAO1FNRgL78Y9-s13WbK0
 Content-Type: application/json
 
 {
   "name": "Empresa Tech S.L.",
-  "nif": "B12345678",
+  "nif": "B12345675",
   "address": "Calle Mayor 123",
   "phone": "611223344",
   "email": "cliente@empresa.com"
