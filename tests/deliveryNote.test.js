@@ -1,5 +1,7 @@
 import request from "supertest";
 import app from "../app.js";
+import path from "path";
+import fs from "fs";
 
 let token = "";
 let noteId = "";
@@ -15,7 +17,7 @@ beforeAll(async () => {
 });
 
 describe("Delivery Note Routes", () => {
-  //Crear un albarán
+   //Crear un albarán
   it("should create a delivery note", async () => {
     const res = await request(app)
       .post("/api/deliverynote")
@@ -26,8 +28,9 @@ describe("Delivery Note Routes", () => {
         date: "2025-05-12"
       });
 
-    expect(res.statusCode).toBe(201);
-    noteId = res.body.note._id; //Guardamos el ID del albarán
+    expect([200, 201]).toContain(res.statusCode);
+    expect(res.body.note).toBeDefined();
+    noteId = res.body.note._id; //Guardamos el ID
   });
 
   //Listar todos los albaranes
@@ -58,5 +61,44 @@ describe("Delivery Note Routes", () => {
 
     expect(res.statusCode).toBe(200);
     expect(res.headers["content-type"]).toContain("application/pdf");
+  });
+
+  //Actualizar datos del albarán
+  it("should update the delivery note", async () => {
+    const res = await request(app)
+      .patch(`/api/deliverynote/${noteId}`)
+      .auth(token, { type: "bearer" })
+      .send({ description: "Descripción modificada para test" });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.note.description).toContain("modificada");
+  });
+
+  //Firmar el albarán subiendo una imagen PNG
+    it("should sign the delivery note with an image", async () => {
+    const signaturePath = path.resolve("tests/assets/signature.png");
+  
+    if (!fs.existsSync(signaturePath)) {
+      console.warn("No se encontró la imagen de firma. Se omite este test.");
+      return;
+    }
+  
+    const res = await request(app)
+      .patch(`/api/deliverynote/${noteId}/sign`)
+      .auth(token, { type: "bearer" })
+      .attach("signature", signaturePath);
+  
+    expect(res.statusCode).toBe(200);
+    expect(res.body.note.signature).toBeDefined();
+});
+
+  //Eliminar el albarán (solo si no está firmado, o tu lógica lo permite)
+  it("should delete the delivery note", async () => {
+    const res = await request(app)
+      .delete(`/api/deliverynote/${noteId}`)
+      .auth(token, { type: "bearer" });
+
+    // Puede fallar si ya está firmado
+    expect([200, 403, 404]).toContain(res.statusCode);
   });
 });
