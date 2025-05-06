@@ -1,11 +1,16 @@
+// Importa el modelo de Proyecto
 import Project from "../models/project.js";
+
+// Función para manejar errores HTTP
 import { handleHttpError } from "../utils/handleError.js";
 
+// Crea un nuevo proyecto
 const createProjectCtrl = async (req, res) => {
   try {
     const user = req.user;
     const { name, description, client } = req.body;
 
+    // Crea el proyecto asociándolo al usuario y cliente indicados
     const project = await Project.create({
       name,
       description,
@@ -21,6 +26,7 @@ const createProjectCtrl = async (req, res) => {
   }
 };
 
+// Actualiza los datos de un proyecto existente
 const updateProjectCtrl = async (req, res) => {
   try {
     const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -31,9 +37,12 @@ const updateProjectCtrl = async (req, res) => {
   }
 };
 
+// Devuelve todos los proyectos activos del usuario o empresa
 const getProjectsCtrl = async (req, res) => {
   try {
     const user = req.user;
+
+    // Busca proyectos activos por usuario o empresa
     const projects = await Project.find({
       $or: [
         { user: user._id },
@@ -49,6 +58,7 @@ const getProjectsCtrl = async (req, res) => {
   }
 };
 
+// Obtiene un proyecto por ID
 const getProjectByIdCtrl = async (req, res) => {
   try {
     const project = await Project.findById(req.params.id).populate("client");
@@ -60,9 +70,14 @@ const getProjectByIdCtrl = async (req, res) => {
   }
 };
 
+// Archiva un proyecto cambiando su estado a "archived"
 const archiveProjectCtrl = async (req, res) => {
   try {
-    const project = await Project.findByIdAndUpdate(req.params.id, { status: "archived" }, { new: true });
+    const project = await Project.findByIdAndUpdate(
+      req.params.id,
+      { status: "archived" },
+      { new: true }
+    );
     res.json({ message: "Proyecto archivado", project });
   } catch (err) {
     console.log(err);
@@ -70,26 +85,33 @@ const archiveProjectCtrl = async (req, res) => {
   }
 };
 
+// Reactiva un proyecto archivado
 const unarchiveProjectCtrl = async (req, res) => {
   try {
-    const project = await Project.findByIdAndUpdate(req.params.id, { status: "active" }, { new: true });
-    res.json({ message: "Proyecto recuperado", project });
+    const project = await Project.findByIdAndUpdate(
+      req.params.id,
+      { status: "active" },
+      { new: true }
+    );
+    res.json({ message: "Proyecto desarchivado", project });
   } catch (err) {
     console.log(err);
     handleHttpError(res, "ERROR_UNARCHIVING_PROJECT");
   }
 };
 
+// Elimina un proyecto de la base de datos
 const deleteProjectCtrl = async (req, res) => {
   try {
     await Project.findByIdAndDelete(req.params.id);
-    res.json({ message: "Proyecto eliminado permanentemente" });
+    res.json({ message: "Proyecto eliminado" });
   } catch (err) {
     console.log(err);
     handleHttpError(res, "ERROR_DELETING_PROJECT");
   }
 };
 
+// Exporta todos los controladores
 export {
   createProjectCtrl,
   updateProjectCtrl,

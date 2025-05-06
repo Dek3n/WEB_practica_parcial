@@ -1,8 +1,10 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
+// Carga variables de entorno (.env)
 dotenv.config();
 
+// Configura el transporte de correo con Gmail
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -11,6 +13,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// Envía el correo con el código de recuperación
 const sendRecoveryEmail = async (to, code) => {
   const mailOptions = {
     from: `"${process.env.EMAIL_NAME}" <${process.env.EMAIL_USER}>`,

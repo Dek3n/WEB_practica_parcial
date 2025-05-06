@@ -1,5 +1,7 @@
+// Modelo de Proyecto
 import mongoose from "mongoose";
 
+// Esquema que representa los datos de un proyecto
 const ProjectSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -8,7 +10,7 @@ const ProjectSchema = new mongoose.Schema({
   description: String,
   client: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Client",
+    ref: "Client", // Relación con cliente
     required: true
   },
   user: {
@@ -22,11 +24,13 @@ const ProjectSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "active"
+    default: "active" // puede cambiar a "archived"
   }
 }, {
-  timestamps: true
+  timestamps: true // Guarda fecha de creación y actualización
 });
 
+// Define el modelo de Mongoose
 const Project = mongoose.model("Project", ProjectSchema);
+
 export default Project;

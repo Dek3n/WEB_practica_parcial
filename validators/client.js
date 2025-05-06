@@ -1,6 +1,7 @@
 import { check } from "express-validator";
 import validateResults from "../utils/handleValidator.js";
 
+// Validación para crear un cliente
 const validatorCreateClient = [
   check("name").exists().notEmpty().withMessage("El nombre es obligatorio"),
   check("nif").exists().notEmpty().isLength({ min: 8 }).withMessage("El NIF debe tener al menos 8 caracteres"),
@@ -9,6 +10,7 @@ const validatorCreateClient = [
   (req, res, next) => validateResults(req, res, next)
 ];
 
+// Validación para actualizar un cliente (todos los campos opcionales)
 const validatorUpdateClient = [
   check("name").optional().notEmpty(),
   check("nif").optional().isLength({ min: 8 }),

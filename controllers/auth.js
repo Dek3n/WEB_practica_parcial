@@ -48,6 +48,7 @@ const registerCtrl = async (req, res) => {
   }
 };
 
+// Controlador para validar un código de verificación (email)
 const validateEmailCodeCtrl = async (req, res) => {
   try {
     const { code } = req.body;
@@ -76,6 +77,7 @@ const validateEmailCodeCtrl = async (req, res) => {
   }
 };
 
+// Controlador para iniciar sesión
 const loginCtrl = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -223,6 +225,7 @@ const recoverPasswordCtrl = async (req, res) => {
   }
 };
 
+// Controlador para invitar a otro usuario (por email)
 const inviteUserCtrl = async (req, res) => {
   try {
     const inviter = req.user; // usuario que invita
